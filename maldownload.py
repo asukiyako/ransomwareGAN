@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import os
+import pyzipper
 
 '''
 RIP my initial code 🪦
@@ -21,6 +22,8 @@ RIP my initial code 🪦
 # args = parser.parse_args()
 
 headers = { 'API-KEY': 'f1599adeb25bd43f7f3fe65bfaa17473983085c82c08b0d8' }
+
+ZIP_PASSWORD = b'infected'
 
 # #Download the malware
 # if(args.info == False):
@@ -111,7 +114,11 @@ with open("sha256.txt","w") as f:
                 completepath = os.path.join(df["Category"][i], sha256+".txt")
                 open(completepath+'.zip', 'wb').write(response.content)
             print("Downloaded!!\n")
-
+            with pyzipper.AESZipFile(completepath+".zip") as zf:
+                zf.pwd = ZIP_PASSWORD
+                sample = zf.extractall(df["Category"][i])  
+                print("Sample unzipped\n")
+                os.remove(completepath+".zip")
 
 #done ggs
 
