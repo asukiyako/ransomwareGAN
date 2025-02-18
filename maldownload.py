@@ -7,51 +7,11 @@ import pyzipper
 RIP my initial code 🪦
 '''
 
-# def check_sha256(s):
-#     if s == "":
-#         return
-#     if len(s) != 64:
-#         raise argparse.ArgumentTypeError("Use sha256 value instead")
-#     return str(s)
 
-# parser = argparse.ArgumentParser(description='Download malware sample using the Malware Bazaar API')
-# # parser.add_argument('-s', '--hash', help='SHA256 hash of file to download', metavar="HASH", required=True, type=check_sha256)
-# parser.add_argument('-s', '--hash', help='SHA256 hash of file to download', metavar="HASH", required=True)
-# parser.add_argument('-i', '--info', help='Get info on a malware (does not download)', required=False, default=False, action='store_true')
-
-# args = parser.parse_args()
 
 headers = { 'API-KEY': 'f1599adeb25bd43f7f3fe65bfaa17473983085c82c08b0d8' }
 
 ZIP_PASSWORD = b'infected'
-
-# #Download the malware
-# if(args.info == False):
-#     data = {
-#         'query': 'get_file',
-#         'sha256_hash': args.hash,
-#     }
-#     response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=20, headers=headers, allow_redirects=True)
-#     if 'file_not_found' in response.text:
-#         print("Malware not found")
-#         sys.exit()
-#     else:
-#         open(args.hash+'.zip', 'wb').write(response.content)  
-# #Check of malware info
-# else:
-#     data = {
-#         'query': 'get_info',
-#         'hash': args.hash,
-#     }
-#     print(data)
-#     response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=20, headers=headers)
-#     if 'hash_not_found' in response.text:
-#         print("Malware not found")
-#     else:
-#         API_data = response.content.decode("utf-8", "ignore")
-#         loc=API_data.find("\"sha256_hash\":")
-#         print(API_data[loc+16:loc+64+16])
-
 
 '''
 The problem with this site and API calls is that it only accepts SHA256
