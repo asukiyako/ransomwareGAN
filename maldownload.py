@@ -54,7 +54,7 @@ with open("sha256.txt","w") as f:
                 'hash': df["md5"][i],
             }
         print("API call: ",i+1,"/21752\n")
-        response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=20, headers=headers)
+        response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=30, headers=headers)
         if 'hash_not_found' in response.text:
             print("Malware not found")
         else:
