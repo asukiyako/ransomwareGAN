@@ -30,7 +30,12 @@ with open("sha256.txt","w") as f:
                 'hash': df["md5"][i],
             }
         print("API call: ",i+1,"/21752\n")
-        response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=30, headers=headers)
+        try:
+            response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=30, headers=headers)
+        except requests.Timeout:
+            time.sleep(60)
+            response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=30, headers=headers)
+ 
         if '<title>502' in response.text:
             time.sleep(60)
             response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=30, headers=headers)
