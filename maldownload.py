@@ -31,6 +31,9 @@ with open("sha256.txt","w") as f:
             }
         print("API call: ",i+1,"/21752\n")
         response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=30, headers=headers)
+        if '<title>502' in response.text:
+            time.sleep(60)
+            response = requests.post('https://mb-api.abuse.ch/api/v1/', data=data, timeout=30, headers=headers)
         if 'hash_not_found' in response.text:
             print("Malware not found")
         else:
@@ -56,8 +59,6 @@ with open("sha256.txt","w") as f:
                 print("Sample unzipped\n")
                 zf.close()
                 os.remove(completepath+".zip")
-        if((i+1)%100==0):
-            time.sleep(60)
 
 #done ggs
 
