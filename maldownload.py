@@ -4,35 +4,10 @@ import os
 import pyzipper
 import time
 
-'''
-RIP my initial code 🪦
-'''
-
-
-
 headers = { 'API-KEY': 'f1599adeb25bd43f7f3fe65bfaa17473983085c82c08b0d8' }
 
 ZIP_PASSWORD = b'infected'
-
-'''
-The problem with this site and API calls is that it only accepts SHA256
-But we have only the MD5 and SHA1 values from the .csv
-I wrote this code assuming we know its SHA256 vaule :(
-
-To tackle this imma take the SHA1/MD5 values from all rows, and check if it exists in the malware database.
-If it exists, I'll query its SHA256 value and store it in another file.
-I will then use this file to automate the download process.
-'''
-
-
 df= pd.read_csv("malware.csv")
-
-#Checkk other script for download
-#P.S. run this code if you are bored, I already got the SHA256 values for you in the .txt along with its md5 earier if you wanna check any other data in the other csv
-
-#NVM imma mix both in one so it donwloads as soon as it finds the SHA256 value
-
-#Modifying code to download malware sample in respective folders (easy to classify)
 
 directories = []
 for i in df["Category"]:
