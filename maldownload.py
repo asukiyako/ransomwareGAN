@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import os
 import pyzipper
+import time
 
 '''
 RIP my initial code 🪦
@@ -73,12 +74,15 @@ with open("sha256.txt","w") as f:
             else:
                 completepath = os.path.join(df["Category"][i], sha256+".txt")
                 open(completepath+'.zip', 'wb').write(response.content)
-            print("Downloaded!!\n")
-            with pyzipper.AESZipFile(completepath+".zip") as zf:
+                print("Downloaded!!\n")
+                with pyzipper.AESZipFile(completepath+".zip") as zf:
                 zf.pwd = ZIP_PASSWORD
                 sample = zf.extractall(df["Category"][i])  
                 print("Sample unzipped\n")
+                zf.close()
                 os.remove(completepath+".zip")
+        if((i+1)%100==0):
+            time.sleep(60)
 
 #done ggs
 
