@@ -54,9 +54,9 @@ with open("sha256.txt","w") as f:
                 open(completepath+'.zip', 'wb').write(response.content)
                 print("Downloaded!!\n")
                 with pyzipper.AESZipFile(completepath+".zip") as zf:
-                zf.pwd = ZIP_PASSWORD
-                sample = zf.extractall(df["Category"][i])  
-                print("Sample unzipped\n")
+                    zf.pwd = ZIP_PASSWORD
+                    sample = zf.extractall(df["Category"][i])  
+                    print("Sample unzipped\n")
                 zf.close()
                 os.remove(completepath+".zip")
 
