@@ -7,6 +7,7 @@ from pydrive2.drive import GoogleDrive
 
 # Setup authentication
 gauth = GoogleAuth()
+gauth.LoadClientConfigFile("client_secrets.json")
 gauth.LocalWebserverAuth()
 drive = GoogleDrive(gauth)
 
