@@ -4,7 +4,7 @@ import os
 import zipfile
 
 # Define the directory containing the .zip files
-directory = '/home/rw/Ransomware'
+directory = '/home/rw/Ransomware/MarauderMap'
 
 # Define the password
 password = 'maraudermap'
