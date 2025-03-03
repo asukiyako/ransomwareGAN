@@ -4,7 +4,7 @@ from PIL import Image
 import magic  # Cross-platform way to detect file types
 
 # Define input and output directories
-input_folder = "./exe_files"  # Folder containing executable files
+input_folder = "./malware"  # Folder containing executable files
 output_folder = "./output_images"  # Folder to save .png images
 
 # Ensure output directory exists
